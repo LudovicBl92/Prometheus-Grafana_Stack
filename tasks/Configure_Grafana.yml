@@ -1,0 +1,12 @@
+---
+
+ - name: Copy the datasource.yml file to add Prometheus as datasource
+   copy:
+    src: /etc/ansible/Prometheus-Grafana/files/datasource.yml
+    dest: /etc/grafanaprovisioning/datasources/
+
+ - name: Restart Grafana
+   service:
+    name: grafana-server
+    state: restarted
+

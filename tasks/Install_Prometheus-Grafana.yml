@@ -1,10 +1,5 @@
 ---
 
- - name: Update and Upgrade host
-   apt:
-    update_cache: yes
-    upgrade: yes
-
  - name: Install Prometheus
    apt:
     name: prometheus
@@ -19,6 +14,11 @@
    lineinfile:
     line: "deb https://packages.grafana.com/enterprise/deb stable main"
     dest: /etc/apt/sources.list
+
+ - name: Update and Upgrade host
+   apt:
+    update_cache: yes
+    upgrade: yes
 
  - name: Install Grafana
    apt:

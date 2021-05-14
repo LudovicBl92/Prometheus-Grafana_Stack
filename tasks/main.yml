@@ -1,4 +1,5 @@
 ---
 # tasks file for Prometheus-Grafana
 - import_tasks: Install_Prometheus-Grafana.yml
+- import_tasks: Configure_Prometheus.yml
 - import_tasks: Configure_Grafana.yml

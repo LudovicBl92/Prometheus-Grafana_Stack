@@ -2,7 +2,7 @@
 
  - name: Use template datasource.j2
    template:
-    src: /etc/ansible/Prometheus-Grafana/templates/datasource.j2
+    src: /etc/ansible/roles/Prometheus-Grafana/templates/datasource.j2
     dest: /etc/grafana/provisioning/datasources/datasource.yml
 
  - name: Create Dashboard directory to store the dashboard json file
@@ -10,21 +10,20 @@
     path: /etc/grafana/dashboard
     state: directory
 
- - name: Copy the dashboard.json file to add as a dashboard
+ - name: Copy the template dashboard file to add in dashboard tab
    copy:
-    src: /etc/ansible/Prometheus-Grafana/files/dashboard.json
-    dest: /etc/grafana/dashboard
+    src: /etc/ansible/roles/Prometheus-Grafana/files/dashboard.json
+    dest: /etc/grafana/dashboard/dashboard.json
 
- - name: Change sample.yml to sample_old.yml
-   shell: mv /etc/grafana/provisioning/dashboards/sample.yml /etc/grafana/provisioning/dashboards/sample_old.yml
+ - name: Remove sample.yml file
+   file:
+    path: /etc/grafana/provisioning/dashboards/sample.yml
+    state: absent
 
  - name: Copy Sample.yml file to include dashboard 
    copy:
-    src: /etc/ansible/Prometheus-Grafana/files/sample.yml
+    src: /etc/ansible/roles/Prometheus-Grafana/files/sample.yml
     dest: /etc/grafana/provisioning/dashboards
-
- - name: Restart Grafana
-   service:
-    name: grafana-server
-    state: restarted
+   notify:
+    - Restart Grafana
 

@@ -1,0 +1,8 @@
+--- 
+
+ - name: Copy template prometheus.j2 
+   template:
+    src: /etc/ansible/roles/Prometheus-Grafana/templates/prometheus.j2
+    dest: /etc/prometheus/prometheus.yml
+   notify: 
+    - Restart Prometheus

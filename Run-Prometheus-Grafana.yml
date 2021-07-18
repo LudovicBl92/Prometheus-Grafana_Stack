@@ -1,6 +1,5 @@
 ---
  - hosts: group1
-   become: yes
 
    roles:
     - Prometheus-Grafana

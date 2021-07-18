@@ -1,5 +1,6 @@
 # Prometheus-Grafana
 
+This playbook is functional on ubuntu 18.04
 
 You only need to execute the command: ansible-playbook Run-Prometheus-Grafana.yml.
 The playbook Install_Prometheus-Grafana.yml will install Prometheus and in a second time Grafana.
